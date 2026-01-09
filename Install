@@ -1,0 +1,25 @@
+#!/bin/sh
+#
+#  Install
+###########################################################################
+
+cd `dirname $0`
+
+if [ ! -e ./Configuration ]; then
+  echo "Could not find Configuration file."
+  exit 1
+fi
+. ./Configuration
+
+npm install
+npm run prepack
+
+mkdir -p build
+mkdir -p build/css
+mkdir -p build/js
+cp index.html build
+cp documentation.html build
+cp tutorial.html build
+cp css/morpheus-latest.min.css build/css
+cp js/morpheus-latest.min.js build/js
+cp js/morpheus-external-latest.min.js build/js

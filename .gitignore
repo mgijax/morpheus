@@ -1,6 +1,14 @@
 .idea/
 node_modules/
 package-lock.json
+build/
+Configuration
+*.min.css
+*.min.js
+css/morpheus.all.css
+js/morpheus-esm.js
+js/morpheus-external-r.js
+js/morpheus-external.js
 
 # Created by .ignore support plugin (hsz.mobi)
 ctrp
