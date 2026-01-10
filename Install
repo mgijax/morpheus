@@ -17,9 +17,11 @@ npm run prepack
 mkdir -p build
 mkdir -p build/css
 mkdir -p build/js
+mkdir -p build/fonts
 cp index.html build
 cp documentation.html build
 cp tutorial.html build
-cp css/morpheus-latest.min.css build/css
+cp css/* build/css
 cp js/morpheus-latest.min.js build/js
 cp js/morpheus-external-latest.min.js build/js
+cp fonts/* build/fonts

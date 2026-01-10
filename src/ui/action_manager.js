@@ -756,7 +756,7 @@ morpheus.ActionManager = function () {
       selectAll(options, true);
     }
   });
-  var copySelection = function (options, isColumns) {
+  var getSelectedItems = function (options, isColumns) {
     var project = options.heatMap.getProject();
     var dataset = project
       .getSortedFilteredDataset();
@@ -782,6 +782,23 @@ morpheus.ActionManager = function () {
         text.push(toStringFunction(v
           .getValue(index)));
       });
+    return text;
+  };
+  var forwardSelection = function (options, isColumns) {
+    var previous = options.heatMap.selectedRowTrackName;
+    options.heatMap.selectedRowTrackName = "MGI ID";
+    var text = getSelectedItems(options, isColumns);
+    if (text.length > 5000) {
+        alert("Too many genes selected. Please reduce selection to 5000 items or less.");
+    } else {
+	var url = `/gxd/batchSearch?gxd=batchSubmission=false&idType=auto&ids=${text.join(", ")}&fileType=tab&idColumn=1&results=100&startIndex=0&sort=&dir=asc&tab=resultstab`;
+	window.open(url);
+    }
+    options.heatMap.selectedRowTrackName = previous;
+
+  };
+  var copySelection = function (options, isColumns) {
+    var text = getSelectedItems(options, isColumns);
     morpheus.Util.setClipboardData([
       {
         format: 'text/plain',
@@ -792,6 +809,12 @@ morpheus.ActionManager = function () {
     name: 'Copy Selected Rows',
     cb: function (options) {
       copySelection(options, false);
+    }
+  });
+  this.add({
+    name: 'Forward Selected Rows to GXD',
+    cb: function (options) {
+      forwardSelection(options, false);
     }
   });
   this.add({

@@ -5,10 +5,12 @@ build/
 Configuration
 *.min.css
 *.min.js
-css/morpheus.all.css
-js/morpheus-esm.js
-js/morpheus-external-r.js
-js/morpheus-external.js
+morpheus.all.css
+morpheus-esm.js
+morpheus-external-r.js
+morpheus-external.js
+morpheus-latest.min.js
+morpheus.js
 
 # Created by .ignore support plugin (hsz.mobi)
 ctrp

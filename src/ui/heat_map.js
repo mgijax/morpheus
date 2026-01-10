@@ -302,6 +302,7 @@ morpheus.HeatMap = function (options) {
         'Move Selected Rows To Top',
         'Annotate Selected Rows',
         'Copy Selected Rows',
+        'Forward Selected Rows to GXD',
         'Invert' +
         ' Selected Rows',
         'Select All Rows',
