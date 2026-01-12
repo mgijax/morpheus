@@ -789,7 +789,9 @@ morpheus.ActionManager = function () {
     options.heatMap.selectedRowTrackName = "MGI ID";
     var text = getSelectedItems(options, isColumns);
     if (text.length > 5000) {
-        alert("Too many genes selected. Please reduce selection to 5000 items or less.");
+        alert("Too many genes selected. Please reduce selection to 5000 genes or less.");
+    } else if (text.length === 0) {
+        alert("Nothing selected. Please select one or more genes.");
     } else {
 	var url = `/gxd/batchSearch?gxd=batchSubmission=false&idType=auto&ids=${text.join(", ")}&fileType=tab&idColumn=1&results=100&startIndex=0&sort=&dir=asc&tab=resultstab`;
 	window.open(url);
