@@ -793,7 +793,9 @@ morpheus.ActionManager = function () {
     } else if (text.length === 0) {
         alert("Nothing selected. Please select one or more genes (up to 5000).");
     } else {
-	var url = `/gxd/batchSearch?gxd=batchSubmission=false&idType=auto&ids=${text.join(", ")}&fileType=tab&idColumn=1&results=100&startIndex=0&sort=&dir=asc&tab=resultstab`;
+	var ids = text.join(" ");
+	var hash = `batchSubmission=false&idType=auto&ids=${ids}&fileType=tab&idColumn=1&results=100&startIndex=0&sort=&dir=asc&tab=resultstab`;
+	var url = `/gxd/batchSearch#gxd=${encodeURIComponent(hash)}`;
 	window.open(url);
     }
     options.heatMap.selectedRowTrackName = previous;
